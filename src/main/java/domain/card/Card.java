@@ -30,13 +30,15 @@ public class Card {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        if (this == o) {
             return true;
-        if (!(o instanceof Card))
+        }
+        if (!(o instanceof Card)) {
             return false;
+        }
         Card card = (Card) o;
         return symbol == card.symbol &&
-                type == card.type;
+            type == card.type;
     }
 
     @Override

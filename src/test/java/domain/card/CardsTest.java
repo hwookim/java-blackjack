@@ -1,15 +1,14 @@
 package domain.card;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class CardsTest {
 
@@ -72,9 +71,9 @@ class CardsTest {
 
     private static Stream<Arguments> createCardAndPoint() {
         return Stream.of(
-                Arguments.of(new Card(Symbol.DIAMOND, Type.FOUR), 20),
-                Arguments.of(new Card(Symbol.DIAMOND, Type.FIVE), 21),
-                Arguments.of(new Card(Symbol.DIAMOND, Type.SIX), 12)
+            Arguments.of(new Card(Symbol.DIAMOND, Type.FOUR), 20),
+            Arguments.of(new Card(Symbol.DIAMOND, Type.FIVE), 21),
+            Arguments.of(new Card(Symbol.DIAMOND, Type.SIX), 12)
         );
     }
 }

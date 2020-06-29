@@ -2,7 +2,6 @@ package domain.user;
 
 import domain.result.PrizeRatio;
 import domain.result.RatioRule;
-
 import java.util.Arrays;
 
 public class Player extends User {
@@ -18,9 +17,9 @@ public class Player extends User {
 
     public PrizeRatio decideRatio(Dealer dealer) {
         return Arrays.stream(RatioRule.values())
-                .filter(ratioRule -> ratioRule.condition(this, dealer))
-                .findFirst()
-                .orElseThrow(() -> new AssertionError("게임 규칙이 올바르지 않습니다."))
-                .getPrizeRatio();
+            .filter(ratioRule -> ratioRule.condition(this, dealer))
+            .findFirst()
+            .orElseThrow(() -> new AssertionError("게임 규칙이 올바르지 않습니다."))
+            .getPrizeRatio();
     }
 }

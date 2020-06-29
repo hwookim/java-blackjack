@@ -1,18 +1,17 @@
 package domain.user;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import domain.card.Card;
 import domain.card.Symbol;
 import domain.card.Type;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class DealerTest {
 
@@ -42,9 +41,9 @@ class DealerTest {
 
     private static Stream<Arguments> createOption() {
         return Stream.of(
-                Arguments.of(new Card(Symbol.DIAMOND, Type.SIX), true),
-                Arguments.of(new Card(Symbol.DIAMOND, Type.SEVEN), false),
-                Arguments.of(new Card(Symbol.DIAMOND, Type.ACE), false)
+            Arguments.of(new Card(Symbol.DIAMOND, Type.SIX), true),
+            Arguments.of(new Card(Symbol.DIAMOND, Type.SEVEN), false),
+            Arguments.of(new Card(Symbol.DIAMOND, Type.ACE), false)
         );
     }
 }

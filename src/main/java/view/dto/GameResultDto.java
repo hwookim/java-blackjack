@@ -3,7 +3,6 @@ package view.dto;
 import domain.result.GameResult;
 import domain.user.Player;
 import domain.user.User;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 

@@ -1,12 +1,13 @@
 package domain.card;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 class DeckTest {
 
@@ -14,7 +15,7 @@ class DeckTest {
     @DisplayName("생성 확인")
     void create() {
         assertThatCode(DeckFactory::createDeck)
-                .doesNotThrowAnyException();
+            .doesNotThrowAnyException();
     }
 
     @Test
@@ -23,8 +24,8 @@ class DeckTest {
         List<Card> cards = new ArrayList<>();
 
         assertThatThrownBy(() -> new Deck(cards))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("카드의 개수가 52개가 아닙니다.");
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("카드의 개수가 52개가 아닙니다.");
     }
 
     @Test
@@ -38,8 +39,8 @@ class DeckTest {
         }
 
         assertThatThrownBy(() -> new Deck(cards))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("중복된 카드가 있습니다.");
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("중복된 카드가 있습니다.");
     }
 
     @Test

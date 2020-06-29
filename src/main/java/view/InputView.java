@@ -1,11 +1,10 @@
 package view;
 
-import view.dto.UserDto;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import view.dto.UserDto;
 
 public class InputView {
 
@@ -20,8 +19,8 @@ public class InputView {
     private static List<String> convertToPlayerNames(String nameInput) {
         List<String> names = Arrays.asList(nameInput.split(",", -1));
         return names.stream()
-                .map(String::trim)
-                .collect(Collectors.toList());
+            .map(String::trim)
+            .collect(Collectors.toList());
     }
 
     public static int receiveMoneyInput(String name) {

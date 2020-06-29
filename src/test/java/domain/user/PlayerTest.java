@@ -1,9 +1,13 @@
 package domain.user;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+
 import domain.card.Card;
 import domain.card.Symbol;
 import domain.card.Type;
 import domain.result.PrizeRatio;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,11 +15,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.MockitoAnnotations;
-
-import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
 
 class PlayerTest {
 
@@ -32,7 +31,7 @@ class PlayerTest {
     @DisplayName("생성 확인")
     void create() {
         assertThatCode(() -> new Player("이름"))
-                .doesNotThrowAnyException();
+            .doesNotThrowAnyException();
     }
 
     @ParameterizedTest
@@ -49,9 +48,9 @@ class PlayerTest {
 
     private static Stream<Arguments> createOption() {
         return Stream.of(
-                Arguments.of(new Card(Symbol.DIAMOND, Type.TWO), true),
-                Arguments.of(new Card(Symbol.DIAMOND, Type.THREE), false),
-                Arguments.of(new Card(Symbol.DIAMOND, Type.FIVE), false)
+            Arguments.of(new Card(Symbol.DIAMOND, Type.TWO), true),
+            Arguments.of(new Card(Symbol.DIAMOND, Type.THREE), false),
+            Arguments.of(new Card(Symbol.DIAMOND, Type.FIVE), false)
         );
     }
 
@@ -72,30 +71,31 @@ class PlayerTest {
 
     private static Stream<Arguments> createCardSet() {
         return Stream.of(
-                //플레이어가 21점인 경우
-                createCardsAndWinningResult(Type.FIVE, Type.FIVE, PrizeRatio.DRAW),
-                createCardsAndWinningResult(Type.FIVE, Type.FOUR, PrizeRatio.WIN),
-                createCardsAndWinningResult(Type.FIVE, Type.SIX, PrizeRatio.WIN),
+            //플레이어가 21점인 경우
+            createCardsAndWinningResult(Type.FIVE, Type.FIVE, PrizeRatio.DRAW),
+            createCardsAndWinningResult(Type.FIVE, Type.FOUR, PrizeRatio.WIN),
+            createCardsAndWinningResult(Type.FIVE, Type.SIX, PrizeRatio.WIN),
 
-                //플레이어가 버스트인 경우
-                createCardsAndWinningResult(Type.SIX, Type.SIX, PrizeRatio.LOSE),
-                createCardsAndWinningResult(Type.SIX, Type.FIVE, PrizeRatio.LOSE),
-                createCardsAndWinningResult(Type.SIX, Type.FOUR, PrizeRatio.LOSE),
+            //플레이어가 버스트인 경우
+            createCardsAndWinningResult(Type.SIX, Type.SIX, PrizeRatio.LOSE),
+            createCardsAndWinningResult(Type.SIX, Type.FIVE, PrizeRatio.LOSE),
+            createCardsAndWinningResult(Type.SIX, Type.FOUR, PrizeRatio.LOSE),
 
-                //플레이어가 21미만인 경우
-                createCardsAndWinningResult(Type.THREE, Type.TWO, PrizeRatio.WIN),
-                createCardsAndWinningResult(Type.THREE, Type.THREE, PrizeRatio.DRAW),
-                createCardsAndWinningResult(Type.THREE, Type.FOUR, PrizeRatio.LOSE),
-                createCardsAndWinningResult(Type.THREE, Type.FIVE, PrizeRatio.LOSE),
-                createCardsAndWinningResult(Type.THREE, Type.SIX, PrizeRatio.WIN)
+            //플레이어가 21미만인 경우
+            createCardsAndWinningResult(Type.THREE, Type.TWO, PrizeRatio.WIN),
+            createCardsAndWinningResult(Type.THREE, Type.THREE, PrizeRatio.DRAW),
+            createCardsAndWinningResult(Type.THREE, Type.FOUR, PrizeRatio.LOSE),
+            createCardsAndWinningResult(Type.THREE, Type.FIVE, PrizeRatio.LOSE),
+            createCardsAndWinningResult(Type.THREE, Type.SIX, PrizeRatio.WIN)
         );
     }
 
-    private static Arguments createCardsAndWinningResult(Type player, Type dealer, PrizeRatio prizeRatio) {
+    private static Arguments createCardsAndWinningResult(Type player, Type dealer,
+        PrizeRatio prizeRatio) {
         return Arguments.of(
-                new Card(Symbol.HEART, player),
-                new Card(Symbol.SPADE, dealer),
-                prizeRatio
+            new Card(Symbol.HEART, player),
+            new Card(Symbol.SPADE, dealer),
+            prizeRatio
         );
     }
 

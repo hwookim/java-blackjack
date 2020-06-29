@@ -4,7 +4,6 @@ import domain.user.Dealer;
 import domain.user.Player;
 import domain.user.PlayersInfo;
 import domain.user.User;
-
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -32,8 +31,8 @@ public class GameResult {
 
     public int getProfitOfDealer() {
         int totalProfitOfPlayers = profitOfPlayers.values()
-                .stream()
-                .reduce(0, Integer::sum);
+            .stream()
+            .reduce(0, Integer::sum);
 
         return -totalProfitOfPlayers;
     }

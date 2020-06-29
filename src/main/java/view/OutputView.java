@@ -2,13 +2,12 @@ package view;
 
 import domain.card.Card;
 import domain.user.Dealer;
-import view.dto.GameResultDto;
-import view.dto.PlayersDto;
-import view.dto.UserDto;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import view.dto.GameResultDto;
+import view.dto.PlayersDto;
+import view.dto.UserDto;
 
 public class OutputView {
 
@@ -24,9 +23,9 @@ public class OutputView {
 
     private static void printFirstDealOut(PlayersDto playersDto) {
         String allNames = playersDto.getPlayers()
-                .stream()
-                .map(UserDto::getName)
-                .collect(Collectors.joining(DELIMITER));
+            .stream()
+            .map(UserDto::getName)
+            .collect(Collectors.joining(DELIMITER));
 
         System.out.printf(NEWLINE + "%s와 %s에게 2장을 나누었습니다." + NEWLINE, Dealer.NAME, allNames);
     }
@@ -39,7 +38,7 @@ public class OutputView {
 
     private static void printPlayersFirstDealOutResult(PlayersDto playersDto) {
         playersDto.getPlayers()
-                .forEach(playerDto -> System.out.println(printUserDealOutResult(playerDto)));
+            .forEach(playerDto -> System.out.println(printUserDealOutResult(playerDto)));
         System.out.println();
     }
 
@@ -54,7 +53,8 @@ public class OutputView {
     public static void printTotalResult(GameResultDto gameResultDto) {
         Map<UserDto, Integer> cardPoint = gameResultDto.getUserToCardPoint();
         System.out.println();
-        cardPoint.forEach((user, point) -> System.out.printf("%s - 결과: %d" + NEWLINE, printUserDealOutResult(user), point));
+        cardPoint.forEach((user, point) -> System.out
+            .printf("%s - 결과: %d" + NEWLINE, printUserDealOutResult(user), point));
 
         printTotalProfit(gameResultDto);
     }
@@ -63,7 +63,7 @@ public class OutputView {
         System.out.println(NEWLINE + "## 최종 수익");
         System.out.printf("%s: %d" + NEWLINE, Dealer.NAME, gameResultDto.getProfitOfDealer());
         gameResultDto.getProfitOfPlayers()
-                .forEach((key, value) -> System.out.printf("%s: %d" + NEWLINE, key.getName(), value));
+            .forEach((key, value) -> System.out.printf("%s: %d" + NEWLINE, key.getName(), value));
     }
 
     private static String printUserDealOutResult(UserDto userDto) {
@@ -76,7 +76,7 @@ public class OutputView {
 
     private static String printCard(List<Card> cards) {
         return cards.stream()
-                .map(card -> card.getType() + card.getSymbol())
-                .collect(Collectors.joining(DELIMITER));
+            .map(card -> card.getType() + card.getSymbol())
+            .collect(Collectors.joining(DELIMITER));
     }
 }

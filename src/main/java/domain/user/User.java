@@ -2,7 +2,6 @@ package domain.user;
 
 import domain.card.Card;
 import domain.card.Cards;
-
 import java.util.Collections;
 import java.util.List;
 

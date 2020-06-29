@@ -3,15 +3,14 @@ import domain.card.DeckFactory;
 import domain.result.GameResult;
 import domain.user.Dealer;
 import domain.user.PlayersInfo;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import view.InputView;
 import view.OutputView;
 import view.dto.GameResultDto;
 import view.dto.PlayersDto;
 import view.dto.UserDto;
-
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Application {
 

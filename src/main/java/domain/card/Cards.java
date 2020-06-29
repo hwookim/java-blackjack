@@ -29,8 +29,8 @@ public class Cards {
 
     private int sumPoint() {
         return cards.stream()
-                .mapToInt(Card::getPoint)
-                .sum();
+            .mapToInt(Card::getPoint)
+            .sum();
     }
 
     public boolean areBust() {
@@ -47,7 +47,7 @@ public class Cards {
 
     private boolean hasAce() {
         return cards.stream()
-                .anyMatch(Card::isAce);
+            .anyMatch(Card::isAce);
     }
 
     public List<Card> getCards() {

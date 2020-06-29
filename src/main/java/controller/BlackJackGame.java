@@ -32,7 +32,7 @@ public class BlackJackGame {
 
     public void additionalDealOut(Dealer dealer, PlayersInfo playersInfo) {
         playersInfo.getPlayersInfo()
-                .forEach((player, bettingMoney) -> playerAdditionalDealOut(player));
+            .forEach((player, bettingMoney) -> playerAdditionalDealOut(player));
         dealerAdditionalDealOut(dealer);
     }
 

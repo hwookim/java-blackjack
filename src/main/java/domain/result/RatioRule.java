@@ -2,15 +2,16 @@ package domain.result;
 
 import domain.user.Dealer;
 import domain.user.Player;
-
 import java.util.function.BiFunction;
 
 public enum RatioRule {
 
     PLAYER_BUST((player, dealer) -> player.isBust(), PrizeRatio.LOSE),
     DEALER_BUST((player, dealer) -> dealer.isBust(), PrizeRatio.WIN),
-    PLAYER_ONLY_BLACK_JACK((player, dealer) -> player.isBlackJack() && !dealer.isBlackJack(), PrizeRatio.BLACKJACK),
-    DEALER_ONLY_BLACK_JACK((player, dealer) -> !player.isBlackJack() && dealer.isBlackJack(), PrizeRatio.LOSE),
+    PLAYER_ONLY_BLACK_JACK((player, dealer) -> player.isBlackJack() && !dealer.isBlackJack(),
+        PrizeRatio.BLACKJACK),
+    DEALER_ONLY_BLACK_JACK((player, dealer) -> !player.isBlackJack() && dealer.isBlackJack(),
+        PrizeRatio.LOSE),
     EQUALS((player, dealer) -> player.compareTo(dealer) == 0, PrizeRatio.DRAW),
     PLAYER_GREATER((player, dealer) -> player.compareTo(dealer) > 0, PrizeRatio.WIN),
     DEALER_GREATER((player, dealer) -> player.compareTo(dealer) < 0, PrizeRatio.LOSE);

@@ -1,12 +1,14 @@
 package util;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.assertj.core.api.Assertions.*;
 
 class YesOrNoTest {
 
@@ -15,15 +17,15 @@ class YesOrNoTest {
     @ValueSource(strings = {"y", "n", "Y", "N"})
     void create(String input) {
         assertThatCode(() -> YesOrNo.isYes(input))
-                .doesNotThrowAnyException();
+            .doesNotThrowAnyException();
     }
 
     @Test
     @DisplayName("y, Y, n ,N이 아닌 경우 예외 처리")
     void createWithInvalidInput() {
         assertThatThrownBy(() -> YesOrNo.isYes("YES"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("유효하지 않은 입력입니다.");
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("유효하지 않은 입력입니다.");
     }
 
     @ParameterizedTest
