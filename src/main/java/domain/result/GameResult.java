@@ -10,10 +10,11 @@ import java.util.Map;
 
 public class GameResult {
 
-    private Map<User, Integer> userToCardPoint;
-    private Map<Player, Integer> profitOfPlayers;
+    private final Map<User, Integer> userToCardPoint;
+    private final Map<Player, Integer> profitOfPlayers;
 
     private GameResult(Dealer dealer, PlayersInfo playersInfo) {
+        userToCardPoint = new LinkedHashMap<>();
         createUserToCardPoint(dealer, playersInfo);
         profitOfPlayers = playersInfo.calculateProfit(dealer);
     }
@@ -23,8 +24,6 @@ public class GameResult {
     }
 
     private void createUserToCardPoint(Dealer dealer, PlayersInfo playersInfo) {
-        userToCardPoint = new LinkedHashMap<>();
-
         userToCardPoint.put(dealer, dealer.calculatePoint());
         userToCardPoint.putAll(playersInfo.calculatePoint());
     }

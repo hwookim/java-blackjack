@@ -11,7 +11,7 @@ public class Deck {
 
     private static final int SIZE = 52;
 
-    private Queue<Card> deck;
+    private final Queue<Card> deck;
 
     public Deck(List<Card> cards) {
         validateSize(cards);

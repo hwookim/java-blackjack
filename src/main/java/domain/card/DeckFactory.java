@@ -5,7 +5,7 @@ import java.util.List;
 
 public class DeckFactory {
 
-    private static List<Card> DECK_CARDS = createDeckCards();
+    private static final List<Card> DECK_CARDS = createDeckCards();
 
     private static List<Card> createDeckCards() {
         List<Card> cards = new ArrayList<>();
